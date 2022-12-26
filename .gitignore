@@ -6,7 +6,9 @@ pyvenv.cfg
 screenshots
 common/__pycache__
 objects/__pycache__
-test/__pycache__
+tests/__pycache__
+__pycache__/
+
 
 
 

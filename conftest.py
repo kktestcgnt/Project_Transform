@@ -3,6 +3,8 @@ import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+from selenium.webdriver.chrome.service import Service
+
 from common.common import BaseClass
 
 driver = None
@@ -20,7 +22,9 @@ class DataExtractor(BaseClass):
 def setup(request):
 
     global driver
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+    obj_service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=obj_service)
+    # driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
     driver.maximize_window()
     print(request.param)
     driver.get(request.param)
