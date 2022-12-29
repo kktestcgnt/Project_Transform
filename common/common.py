@@ -1,13 +1,22 @@
 import configparser
 # import inspect
-
+import time
 import pytest
 import logging
 from datetime import datetime
-
+from objects.app_login_page import LoginPageObjects
 
 @pytest.mark.usefixtures("setup")
 class BaseClass:
+
+    def login(self):
+        lp = LoginPageObjects(self.driver)
+        lp.user_name().send_keys(self.get_data()['app_login_page']['user_id'])
+        time.sleep(3)
+        lp.user_password().send_keys(self.get_data()['app_login_page']['user_pwd'])
+        time.sleep(3)
+        lp.login_btn_action().click()
+        time.sleep(3)
 
     # @staticmethod
     def get_data(self):

@@ -2,12 +2,11 @@ import time
 
 from common.common import BaseClass
 from objects.app_admin_page import AdminPageObjects
-
-from tests.test_app_login_page import TestLoginPageTests
-from tests.test_app_home_page import TestHomePageTests
+from objects.app_home_page import HomePageObjects
 
 
-class TestAdminPageTests(TestHomePageTests):
+
+class TestAdminPage(BaseClass):
 
     def add_system_user(self):
 
@@ -17,8 +16,11 @@ class TestAdminPageTests(TestHomePageTests):
 
         obj_admin_page.su_add_btn_actn().click()
         logger.info("Clicked on Add tab in Admin Page successfully")
-        time.sleep(50)
+        time.sleep(10)
 
     def test_add_system_user(self):
-        self.go_to_admin_page_tests()
+        self.login()
+        obj_home_page = HomePageObjects(self.driver)
+        obj_home_page.hp_admin_page_tab_action().click()
+        time.sleep(3)
         self.add_system_user()
