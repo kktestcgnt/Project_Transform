@@ -5,7 +5,6 @@ from objects.app_admin_page import AdminPageObjects
 from objects.app_home_page import HomePageObjects
 
 
-
 class TestAdminPage(BaseClass):
 
     def add_system_user(self):
@@ -16,7 +15,11 @@ class TestAdminPage(BaseClass):
 
         obj_admin_page.su_add_btn_actn().click()
         logger.info("Clicked on Add tab in Admin Page successfully")
-        time.sleep(10)
+        time.sleep(3)
+        mongo_data = self.mongodb_data()
+        # obj_admin_page.su_user_role.click()
+        obj_admin_page.su_employee_name_actn().send_keys(mongo_data['empname'])
+        time.sleep(5)
 
     def test_add_system_user(self):
         self.login()

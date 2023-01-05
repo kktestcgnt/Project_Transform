@@ -28,7 +28,6 @@ class TestLoginPage(BaseClass):
         # assert a == 8, ("Test Failed", logger.error("Test Failed"), self.take_screenshot("failed_image.png"))
         #
 
-
     def test_login_page(self):
         self.app_login()
         self.driver.implicitly_wait(5)
